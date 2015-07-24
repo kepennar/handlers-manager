@@ -1,7 +1,7 @@
 'use strict';
 
 var expect = require('chai').expect;
-var HandlersManager = require('../src/HandlersManager');
+var HandlersManager = require('../');
 describe('Utils', function() {
 
   function testHandler1() {

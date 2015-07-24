@@ -1,6 +1,6 @@
 var _ = require('lodash');
 
-function HandlersManager(name) {
+module.exports = function HandlersManager(name) {
 
   function getAndSetIfNot(key, container) {
     var node = container[key];
@@ -74,12 +74,4 @@ function HandlersManager(name) {
     }
   };
 }
-
-var globalHandlersManager = new HandlersManager('global');
-module.exports = {
-  create: function(name) {
-    return new HandlersManager(name);
-  },
-  global: globalHandlersManager
-};
 
