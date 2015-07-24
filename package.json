@@ -1,0 +1,31 @@
+{
+  "name": "handlers-manager",
+  "version": "0.0.1-dev",
+  "description": "A javascript sync handlers manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kepennar/handlers-manager.git"
+  },
+  "keywords": [
+    "handlers",
+    "javascript",
+    "simple"
+  ],
+  "author": "Kevin Pennarun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kepennar/handlers-manager/issues"
+  },
+  "homepage": "https://github.com/kepennar/handlers-manager#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "lodash": "^3.10.0"
+  }
+}
