@@ -23,6 +23,7 @@ handlersManager.getHandlers('test:event1')
     handler(data)
 });
 
+// > 'In the handler {data}'
 ```
 
 Execute any handlers defined below a topic node 
@@ -42,4 +43,7 @@ handlersManager.handle('test');
     handler(data)
 });
 
+
+// > 'In the handler 1 {data}'
+// > 'In the handler 2 {data}'
 ```
