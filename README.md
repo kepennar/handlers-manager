@@ -1,5 +1,12 @@
 # handlers-manager
 
+
+## Install
+
+```
+$ npm install -S handlers-manager
+```
+
 ## Examples
 
 Retrieving all handlers for a specific topic
