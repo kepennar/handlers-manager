@@ -2,6 +2,7 @@
 
 ## Examples
 
+Retrieving all handlers for a specific topic
 ```js
 var handlersManager = HandlersManager.create('example');
 this.handlersManager.addHandlers('test:event1', function(data) {
@@ -17,7 +18,7 @@ handlersManager.getHandlers('test:event1')
 
 ```
 
-
+Execute any handlers defined below a topic node 
 ```js
 var handlersManager = HandlersManager.create('example');
 this.handlersManager.addHandlers('test:event1', function(data) {
