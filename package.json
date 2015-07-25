@@ -4,7 +4,7 @@
   "description": "A javascript sync handlers manager",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "node ./node_modules/istanbul/lib/cli.js  cover node_modules/mocha/bin/_mocha"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,10 @@
   "homepage": "https://github.com/kepennar/handlers-manager#readme",
   "devDependencies": {
     "chai": "^3.2.0",
-    "mocha": "^2.2.5"
+    "istanbul": "^0.3.17",
+    "jasmine": "^2.3.1",
+    "mocha": "^2.2.5",
+    "sinon": "^1.15.4"
   },
   "dependencies": {
     "lodash": "^3.10.0"

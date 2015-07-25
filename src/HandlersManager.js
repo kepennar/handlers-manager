@@ -24,11 +24,6 @@ module.exports = function HandlersManager(name) {
     });
     return node;
   }
-  function getFirstNode(topicKey, container) {
-    var keys = topicKey.split(':');
-    var node = getAndSetIfNot(keys[0], container);
-    return node;
-  }
 
   function flattenHandlers(container) {
     var actualHandlers = container.handlers;
@@ -45,14 +40,14 @@ module.exports = function HandlersManager(name) {
     handlers: {},
 
     handle: function(event, data) {
-      var node = getNode(event, this.handlers);
-      flattenHandlers(node).forEach(function(handler) {
+      this.getHandlers(event)
+      .forEach(function(handler) {
         handler(event, data);
       });
     },
-    handleFirst: function(event, data) {
-      var node = getFirstNode(event, this.handlers);
-      flattenHandlers(node).forEach(function(handler) {
+    handleChilds: function(event, data) {
+      this.getHandlersDeep(event)
+      .forEach(function(handler) {
         handler(event, data);
       });
     },

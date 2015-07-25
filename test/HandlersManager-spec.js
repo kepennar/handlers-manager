@@ -1,23 +1,22 @@
 'use strict';
-
 var expect = require('chai').expect;
-var HandlersManager = require('../');
-describe('Utils', function() {
+var sinon = require('sinon');
 
-  function testHandler1() {
-    return 'Foo! Bar! Kicks!';
-  }
-  function testHandler2() {
-    return 'Oof! Rab! Skcik!';
-  }
-  function testHandler3() {
-    return '!skciK !raB !ooF';
-  }
+var HandlersManager = require('../');
+
+describe('HandlersManager', function() {
+
+  var testHandler1;
+  var testHandler2;
+  var testHandler3;
 
   var handlersManager;
 
   beforeEach(function() {
     handlersManager = HandlersManager.create('test');
+    testHandler1 = sinon.spy();
+    testHandler2 = sinon.spy();
+    testHandler3 = sinon.spy();
   });
 
   describe('getHandlers', function() {
@@ -57,6 +56,7 @@ describe('Utils', function() {
 
       handlersManager.addHandlers('foo:', testHandler1);
       handlersManager.addHandlers('foo:bar:kicks', testHandler2);
+      handlersManager.addHandlers('oof:bar:kicks', testHandler3);
 
       var retrievedHandlers = handlersManager.getHandlersDeep('foo');
 
@@ -72,8 +72,40 @@ describe('Utils', function() {
 
       var retrievedHandlers = handlersManager.getHandlersDeep('foo:bar:kicks');
 
-      expect(retrievedHandlers).to.have.length(1);
-      expect(retrievedHandlers).to.contain(testHandler3);
+      expect(retrievedHandlers, 'retrieved handlers').to.have.length(1);
+      expect(retrievedHandlers, 'retrieved handlers').to.contain(testHandler3);
+    });
+  });
+
+  describe('handle', function() {
+
+    it('should execute handlers', function() {
+
+      handlersManager.addHandlers('foo', testHandler1);
+      handlersManager.addHandlers('foo:bar:kicks', testHandler2);
+      handlersManager.addHandlers('another:event', testHandler3);
+
+      handlersManager.handle('foo');
+
+      expect(testHandler1.calledOnce, 'handler1').to.be.true;
+      expect(testHandler2.calledOnce, 'handler2').to.not.be.true;
+      expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
+    });
+  });
+  describe('handleChilds', function() {
+
+    it('should execute all childs handlers', function() {
+
+      handlersManager.addHandlers('foo', testHandler1);
+      handlersManager.addHandlers('foo:bar:kicks', testHandler2);
+      handlersManager.addHandlers('another:event', testHandler3);
+
+      var handlers = handlersManager.getHandlersDeep('foo');
+      handlersManager.handleChilds('foo');
+
+      expect(testHandler1.calledOnce, 'handler1').to.be.true;
+      expect(testHandler2.calledOnce, 'handler2').to.be.true;
+      expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
     });
   });
 
