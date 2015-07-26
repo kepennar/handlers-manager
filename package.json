@@ -1,6 +1,6 @@
 {
   "name": "handlers-manager",
-  "version": "0.0.1-dev",
+  "version": "0.0.1",
   "description": "A javascript sync handlers manager",
   "main": "index.js",
   "scripts": {
