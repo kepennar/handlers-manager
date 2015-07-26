@@ -1,5 +1,5 @@
 # handlers-manager
-
+[![Build Status](https://travis-ci.org/kepennar/handlers-manager.svg?branch=master)](https://travis-ci.org/kepennar/handlers-manager)
 
 ## Install
 
