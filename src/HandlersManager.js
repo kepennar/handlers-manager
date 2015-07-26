@@ -27,7 +27,7 @@ module.exports = function HandlersManager(name) {
 
   function flattenHandlers(container) {
     var actualHandlers = container.handlers;
-    _.forIn(container, function(value, key) {
+    _.forIn(container, function(value) {
       if (_.isPlainObject(value)) {
         actualHandlers = _.union(actualHandlers, flattenHandlers(value));
       }
@@ -68,5 +68,5 @@ module.exports = function HandlersManager(name) {
       getNode(topicKey, this.handlers).handlers = actualHandlers;
     }
   };
-}
+};
 
