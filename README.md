@@ -1,5 +1,7 @@
 # handlers-manager
 [![Build Status](https://travis-ci.org/kepennar/handlers-manager.svg?branch=master)](https://travis-ci.org/kepennar/handlers-manager)
+[![Code Climate](https://codeclimate.com/github/kepennar/handlers-manager/badges/gpa.svg)](https://codeclimate.com/github/kepennar/handlers-manager)
+[![Test Coverage](https://codeclimate.com/github/kepennar/handlers-manager/badges/coverage.svg)](https://codeclimate.com/github/kepennar/handlers-manager/coverage)
 
 ## Install
 
