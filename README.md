@@ -5,6 +5,7 @@
 
 
 [![NPM](https://nodei.co/npm/handlers-manager.png)](https://nodei.co/npm/handlers-manager/)
+[![NPM](https://nodei.co/npm-dl/handlers-manager.png)](https://nodei.co/npm/handlers-manager/)
 
 
 ## Install
