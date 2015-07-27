@@ -3,6 +3,10 @@
 [![Code Climate](https://codeclimate.com/github/kepennar/handlers-manager/badges/gpa.svg)](https://codeclimate.com/github/kepennar/handlers-manager)
 [![Test Coverage](https://codeclimate.com/github/kepennar/handlers-manager/badges/coverage.svg)](https://codeclimate.com/github/kepennar/handlers-manager/coverage)
 
+
+[![NPM](https://nodei.co/npm/handlers-manager.png)](https://nodei.co/npm/handlers-manager/)
+
+
 ## Install
 
 ```
