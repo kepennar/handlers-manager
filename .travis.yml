@@ -7,7 +7,7 @@ branches:
     - master
     - develop
 addons:
-  code_climate:
-    repo_token: 1d9c9e249a2c37ec180e4bdd31e2f27465c96fd0a085b1f2cbd0ef694f6bda63
+  code_climate
 after_script:
-  - codeclimate < coverage/lcov.info
+  - npm install codeclimate-test-reporter
+  - codeclimate-test-reporter < coverage/lcov.info
