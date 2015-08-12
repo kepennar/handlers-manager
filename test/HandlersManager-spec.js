@@ -107,5 +107,18 @@ describe('HandlersManager', function() {
       expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
     });
   });
+  describe('stored handlersManagers', function() {
+
+    it('should be stored if it has a name', function() {
+
+
+      var hm = HandlersManager.create();
+      var hm1 = HandlersManager.create('hm1');
+      var hm2 = HandlersManager.create('hm2');
+
+      expect(HandlersManager.get('hm1')).to.equal(hm1);
+      expect(HandlersManager.get('hm2')).to.equal(hm2);
+    });
+  });
 
 });
