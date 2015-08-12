@@ -26,10 +26,6 @@ module.exports = function HandlersManager(name) {
     return node;
   }
 
-  function getFirstNode(topicKey, container) {
-    var keys = topicKey.split(TOPIC_SEPARATOR);
-  }
-
   function flattenHandlers(container) {
     var actualHandlers = container.handlers;
     _.forIn(container, function(value) {
@@ -52,14 +48,6 @@ module.exports = function HandlersManager(name) {
     },
     handleChilds: function(event, data) {
       this.getHandlersDeep(event)
-      .forEach(function(handler) {
-        handler(event, data);
-      });
-    },
-    handleFirst: function(event, data) {
-      var node = getFirstNode(event, this.handlers);
-
-      flattenHandlers(node)
       .forEach(function(handler) {
         handler(event, data);
       });

@@ -16,5 +16,11 @@ module.exports = {
     }
     return storedHandlersManager[name];
   },
+  delete: function(name) {
+    if (!name) {
+      throw 'You have to give a name for delete an handlersManager';
+    }
+    delete storedHandlersManager[name];
+  },
   global: globalHandlersManager
 };

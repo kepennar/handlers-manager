@@ -111,7 +111,6 @@ describe('HandlersManager', function() {
 
     it('should be stored if it has a name', function() {
 
-
       var hm = HandlersManager.create();
       var hm1 = HandlersManager.create('hm1');
       var hm2 = HandlersManager.create('hm2');
