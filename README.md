@@ -27,6 +27,7 @@ $ bower install -S handlers-manager
 ```
 
 ```html
+<script src="bower_components/lodash/lodash.js" type="text/javascript"></script>
 <script src="bower_components/handlers-manager/handlers-manager.js" type="text/javascript"></script>
 <!-- ... -->
 <script type="text/javascript">

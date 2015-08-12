@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node ./node_modules/istanbul/lib/cli.js  cover node_modules/mocha/bin/_mocha",
-    "prepublish": "node_modules/browserify/bin/cmd.js src/HandlersManagerBrowser.js -o handlers-manager.js"
+    "prepublish": "node_modules/browserify/bin/cmd.js src/HandlersManagerBrowser.js --ignore lodash -o handlers-manager.js"
   },
   "repository": {
     "type": "git",
