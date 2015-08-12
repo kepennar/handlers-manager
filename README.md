@@ -10,8 +10,28 @@
 
 ## Install
 
-```
+### With NodeJs
+
+```sh
 $ npm install -S handlers-manager
+```
+
+```js
+var handlersManager = require('handlers-manager');
+```
+
+### In the browser
+
+```sh
+$ bower install -S handlers-manager
+```
+
+```html
+<script src="bower_components/handlers-manager/handlers-manager.js" type="text/javascript"></script>
+<!-- ... -->
+<script type="text/javascript">
+    var handlersManager = HandlersManager.create('my-manager');
+</script>
 ```
 
 ## Examples
