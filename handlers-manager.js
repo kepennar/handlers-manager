@@ -21,6 +21,7 @@ module.exports = {
     if (!name) {
       throw 'You have to give a name for delete an handlersManager';
     }
+    storedHandlersManager[name].handlers = {};
     delete storedHandlersManager[name];
   },
   global: globalHandlersManager
