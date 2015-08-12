@@ -21,9 +21,10 @@ describe('HandlersManager', function() {
 
   describe('getHandlers', function() {
 
-    it('should return 1 handler', function() {
+    it('should return 1 handler when 1 match with the topic key', function() {
 
       handlersManager.addHandlers('foo:bar:kicks', testHandler1);
+      handlersManager.addHandlers('foo:bar:oops', testHandler2);
 
       var retrievedHandlers = handlersManager.getHandlers('foo:bar:kicks');
 
@@ -31,28 +32,31 @@ describe('HandlersManager', function() {
       expect(handlersManager.getHandlers('foo:bar:kicks')).to.contain(testHandler1);
     });
 
-    it('should not return handlers', function() {
-
-      var retrievedHandlers = handlersManager.getHandlers('foo:bar:kicks');
-
-      expect(retrievedHandlers).to.have.length(0);
-    });
-
-    it('should not return 2 handler', function() {
+    it('should return 2 handler when 2 match the topic key', function() {
 
       var handlers = [testHandler1, testHandler2];
       handlersManager.addHandlers('foo:bar:kicks', handlers);
+      handlersManager.addHandlers('foo:bar:oops', testHandler3);
 
       var retrievedHandlers = handlersManager.getHandlers('foo:bar:kicks');
 
       expect(retrievedHandlers).to.have.length(2);
       expect(retrievedHandlers).to.contain(testHandler1, testHandler2);
     });
+
+    it('should not return handler when none match the topic key', function() {
+      
+      handlersManager.addHandlers('foo:bar:oops', testHandler1);
+
+      var retrievedHandlers = handlersManager.getHandlers('foo:bar:kicks');
+
+      expect(retrievedHandlers).to.have.length(0);
+    });
   });
 
   describe('getHandlersDeep', function() {
 
-    it('should return all childs handlers', function() {
+    it('should return all childs handlers of a topic', function() {
 
       handlersManager.addHandlers('foo:', testHandler1);
       handlersManager.addHandlers('foo:bar:kicks', testHandler2);
@@ -64,7 +68,7 @@ describe('HandlersManager', function() {
       expect(retrievedHandlers).to.contain(testHandler1, testHandler2);
     });
 
-    it('should return the last childs', function() {
+    it('should return only childs and no parents', function() {
 
       handlersManager.addHandlers('foo:', testHandler1);
       handlersManager.addHandlers('foo:', testHandler2);
@@ -79,7 +83,7 @@ describe('HandlersManager', function() {
 
   describe('handle', function() {
 
-    it('should execute handlers', function() {
+    it('should execute all handlers matching the topic key', function() {
 
       handlersManager.addHandlers('foo', testHandler1);
       handlersManager.addHandlers('foo:bar:kicks', testHandler2);
@@ -92,9 +96,10 @@ describe('HandlersManager', function() {
       expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
     });
   });
+
   describe('handleChilds', function() {
 
-    it('should execute all childs handlers', function() {
+    it('should execute all childs handlers matching the topic key', function() {
 
       handlersManager.addHandlers('foo', testHandler1);
       handlersManager.addHandlers('foo:bar:kicks', testHandler2);
@@ -107,9 +112,10 @@ describe('HandlersManager', function() {
       expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
     });
   });
-  describe('stored handlersManagers', function() {
 
-    it('should be stored if it has a name', function() {
+  describe('get', function() {
+
+    it('should return handler manager instance if one have been created with this name', function() {
 
       var hm = HandlersManager.create();
       var hm1 = HandlersManager.create('hm1');
