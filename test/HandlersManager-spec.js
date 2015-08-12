@@ -100,7 +100,6 @@ describe('HandlersManager', function() {
       handlersManager.addHandlers('foo:bar:kicks', testHandler2);
       handlersManager.addHandlers('another:event', testHandler3);
 
-      var handlers = handlersManager.getHandlersDeep('foo');
       handlersManager.handleChilds('foo');
 
       expect(testHandler1.calledOnce, 'handler1').to.be.true;

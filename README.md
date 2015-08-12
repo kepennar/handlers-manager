@@ -45,10 +45,7 @@ handlersManager.addHandlers('test:event', function(data) {
 
 // ...
 
-handlersManager.handle('test')
-.forEach(function(handler) {
-    handler(data)
-});
+handlersManager.handle('test', data);
 
 // > 'In the handler 1 {data}'
 // > 'In the handler 2 {data}'

@@ -1,0 +1,26 @@
+{
+  "name": "handlers-manager",
+  "main": "index.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kepennar/handlers-manager",
+  "authors": [
+    "kepennar <kevin.pennarun@gmail.com>"
+  ],
+  "description": "A javascript sync handlers manager",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "handlers",
+    "javascript",
+    "simple"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

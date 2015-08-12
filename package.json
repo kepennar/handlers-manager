@@ -1,10 +1,11 @@
 {
   "name": "handlers-manager",
-  "version": "0.0.1",
+  "version": "0.0.2-dev",
   "description": "A javascript sync handlers manager",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/istanbul/lib/cli.js  cover node_modules/mocha/bin/_mocha"
+    "test": "node ./node_modules/istanbul/lib/cli.js  cover node_modules/mocha/bin/_mocha",
+    "prepublish": "node_modules/browserify/bin/cmd.js src/HandlersManagerBrowser.js -o handlers-manager.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,9 @@
     "jasmine": "^2.3.1",
     "mocha": "^2.2.5",
     "sinon": "^1.15.4"
+  },
+  "peerDependencies": {
+    "browserify": "^11.0.1"
   },
   "dependencies": {
     "lodash": "^3.10.0"

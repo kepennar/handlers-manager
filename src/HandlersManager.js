@@ -1,6 +1,7 @@
 var _ = require('lodash');
 
 module.exports = function HandlersManager(name) {
+  var TOPIC_SEPARATOR = ':';
 
   function getAndSetIfNot(key, container) {
     var node = container[key];
@@ -17,12 +18,16 @@ module.exports = function HandlersManager(name) {
   }
 
   function getNode(topicKey, container) {
-    var keys = topicKey.split(':');
+    var keys = topicKey.split(TOPIC_SEPARATOR);
     var node = container;
     keys.forEach(function(key) {
       node = getAndSetIfNot(key, node);
     });
     return node;
+  }
+
+  function getFirstNode(topicKey, container) {
+    var keys = topicKey.split(TOPIC_SEPARATOR);
   }
 
   function flattenHandlers(container) {
@@ -47,6 +52,14 @@ module.exports = function HandlersManager(name) {
     },
     handleChilds: function(event, data) {
       this.getHandlersDeep(event)
+      .forEach(function(handler) {
+        handler(event, data);
+      });
+    },
+    handleFirst: function(event, data) {
+      var node = getFirstNode(event, this.handlers);
+
+      flattenHandlers(node)
       .forEach(function(handler) {
         handler(event, data);
       });
