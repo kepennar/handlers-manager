@@ -91,9 +91,9 @@ describe('HandlersManager', function() {
 
       handlersManager.handle('foo');
 
-      expect(testHandler1.calledOnce, 'handler1').to.be.true;
-      expect(testHandler2.calledOnce, 'handler2').to.not.be.true;
-      expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
+      expect(testHandler1.calledOnce, 'handler1 called').to.be.true;
+      expect(testHandler2.calledOnce, 'handler2 called').to.not.be.true;
+      expect(testHandler3.calledOnce, 'handler3 called').to.not.be.true;
     });
   });
 
@@ -107,9 +107,9 @@ describe('HandlersManager', function() {
 
       handlersManager.handleChilds('foo');
 
-      expect(testHandler1.calledOnce, 'handler1').to.be.true;
-      expect(testHandler2.calledOnce, 'handler2').to.be.true;
-      expect(testHandler3.calledOnce, 'handler3').to.not.be.true;
+      expect(testHandler1.calledOnce, 'handler1 called').to.be.true;
+      expect(testHandler2.calledOnce, 'handler2 called').to.be.true;
+      expect(testHandler3.calledOnce, 'handler3 called').to.not.be.true;
     });
   });
 
@@ -123,6 +123,26 @@ describe('HandlersManager', function() {
 
       expect(HandlersManager.get('hm1')).to.equal(hm1);
       expect(HandlersManager.get('hm2')).to.equal(hm2);
+    });
+  });
+
+  describe('delete', function() {
+
+    it('should delete an existing handlersManager', function() {
+
+      HandlersManager.create('hm1');
+      HandlersManager.delete('hm1');
+
+      expect(HandlersManager.get('hm1')).to.be.undefined;
+    });
+    
+    it('should not call handlers if handlersManager have been deleted', function() {
+
+      var hm1 = HandlersManager.create('hm1');
+      hm1.addHandlers('foo', testHandler1);
+      HandlersManager.delete('hm1');
+      hm1.handle('foo');
+      expect(testHandler1.calledOnce, 'handler1 called').to.not.be.true;
     });
   });
 
