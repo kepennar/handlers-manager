@@ -29,10 +29,9 @@ module.exports = {
   global: globalHandlersManager
 };
 
-},{"./src/HandlersManager":3}],2:[function(require,module,exports){
-
-},{}],3:[function(require,module,exports){
-var _ = require('lodash');
+},{"./src/HandlersManager":2}],2:[function(require,module,exports){
+(function (global){
+var _ = (typeof window !== "undefined" ? window['_'] : typeof global !== "undefined" ? global['_'] : null);
 
 module.exports = function HandlersManager(name) {
   var TOPIC_SEPARATOR = ':';
@@ -106,8 +105,9 @@ module.exports = function HandlersManager(name) {
 };
 
 
-},{"lodash":2}],4:[function(require,module,exports){
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],3:[function(require,module,exports){
 var HandlersManager = require('../');
 window.HandlersManager = HandlersManager;
 
-},{"../":1}]},{},[4]);
+},{"../":1}]},{},[3]);
