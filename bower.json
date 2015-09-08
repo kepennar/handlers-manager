@@ -1,7 +1,7 @@
 {
   "name": "handlers-manager",
   "main": "handlers-manager.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/kepennar/handlers-manager",
   "authors": [
     "kepennar <kevin.pennarun@gmail.com>"
