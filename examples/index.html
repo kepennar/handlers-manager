@@ -8,6 +8,7 @@
 </head>
 <body>
   <button id="button1" type="button">Click me</button>
+  <button id="button2" type="button">STOP</button>
   
 </body>
   <script src="../bower_components/lodash/lodash.min.js" type="text/javascript" charset="utf-8" ></script>
@@ -25,8 +26,12 @@
     // ....
 
     var button1 = document.querySelector('#button1');
+    var button2 = document.querySelector('#button2');
     button1.addEventListener('click', function() {
       handlersManager.handle('example:button1:clicked', new Date);
+    });
+    button2.addEventListener('click', function() {
+      handlersManager.removeHandlers('example:button1:clicked');
     });
     setTimeout(function() {
       button1.innerText = 'CLICK ME !!!';

@@ -55,6 +55,9 @@ module.exports = function HandlersManager(name) {
     getHandlers: function(topicKey) {
       return getNode(topicKey, this.handlers).handlers;
     },
+    removeHandlers: function(topicKey) {
+      _.remove(getNode(topicKey, this.handlers).handlers);
+    },
     getHandlersDeep: function(topicKey) {
       var node = getNode(topicKey, this.handlers);
       return flattenHandlers(node);

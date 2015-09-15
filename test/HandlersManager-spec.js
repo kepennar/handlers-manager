@@ -45,7 +45,7 @@ describe('HandlersManager', function() {
     });
 
     it('should not return handler when none match the topic key', function() {
-      
+
       handlersManager.addHandlers('foo:bar:oops', testHandler1);
 
       var retrievedHandlers = handlersManager.getHandlers('foo:bar:kicks');
@@ -135,7 +135,7 @@ describe('HandlersManager', function() {
 
       expect(HandlersManager.get('hm1')).to.be.undefined;
     });
-    
+
     it('should not call handlers if handlersManager have been deleted', function() {
 
       var hm1 = HandlersManager.create('hm1');
@@ -143,6 +143,17 @@ describe('HandlersManager', function() {
       HandlersManager.delete('hm1');
       hm1.handle('foo');
       expect(testHandler1.calledOnce, 'handler1 called').to.not.be.true;
+    });
+
+    it('should not call handlers if handlers have been deleted', function() {
+
+      var hm1 = HandlersManager.create('hm1');
+      hm1.addHandlers('foo', testHandler1);
+      hm1.handle('foo');
+      hm1.removeHandlers('foo');
+      hm1.handle('foo');
+
+      expect(testHandler1.calledOnce, 'handler1 called').to.be.true;
     });
   });
 
